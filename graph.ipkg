@@ -1,0 +1,20 @@
+package graph
+
+sourcedir = src
+
+opts      = "-p tree -p map -p testing"
+
+modules   = Data.Graph
+          , Data.Graph.MapGraph
+          , Tests.MapGraph
+
+tests     = Tests.MapGraph.t_mkGraph
+          , Tests.MapGraph.t_Context
+          , Tests.MapGraph.t_Decomp
+
+	  , Tests.MapGraph.t_NodeAdd
+          , Tests.MapGraph.t_NodeDel
+          , Tests.MapGraph.t_EdgeAdd
+          , Tests.MapGraph.t_EdgeDel
+
+

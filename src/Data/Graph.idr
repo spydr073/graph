@@ -287,14 +287,15 @@ export
 delNodes : (Graph g) => List NodeId -> g a b -> g a b
 delNodes ns g = foldr (\n,graph => delNode n graph) g ns
 
+
 ||| Delete a single edge from a graph.
 export
 delEdge : (Graph g, Eq b) => Edge b -> g a b -> g a b
 delEdge (MkEdge u v b) g with (match u g)
   | (Nothing          , _ ) = g
-  | (Just (Ctx p n s) , g') = (Ctx p n
-                                   (filter (\e => ((fst e) /= b)
-                                               || ((snd e) /= v)) s)) & g'
+  | (Just (Ctx p n s) , g') = let f = (\e => (b /= fst e) || (v /= snd e))
+                              in (Ctx p n (filter f s)) & g'
+
 
 ||| Delete multiple edges from a graph.
 export

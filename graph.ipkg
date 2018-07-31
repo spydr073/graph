@@ -5,8 +5,11 @@ sourcedir = src
 opts      = "-p tree -p map -p testing"
 
 modules   = Data.Graph
+          , Data.DeBruijn
           , Data.Graph.MapGraph
+
           , Tests.MapGraph
+--          , Tests.DeBruijn
 
 tests     = Tests.MapGraph.t_mkGraph
           , Tests.MapGraph.t_Context
